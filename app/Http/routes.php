@@ -12,9 +12,20 @@
 */
 
 Route::get('/', function () {
-   return ('welcome');
+    return view('main');
 });
 
+Route::get('about', 'PagesController@about');
+Route::get('contact', 'PagesController@contact');
+
+
+Route::get('/login', function () {
+    return view('pages.login');
+});
+
+Route::get('/register', function () {
+    return view('pages.register');
+});
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -29,4 +40,3 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     //
 });
-
