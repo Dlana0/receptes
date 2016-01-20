@@ -20,11 +20,31 @@ Route::get('contact', 'PagesController@contact');
 
 
 Route::get('/login', function () {
-    return view('pages.login');
+    return view('auth/login');
 });
 
 Route::get('/register', function () {
-    return view('pages.register');
+    return view('auth/register');
+});
+
+Route::get('/desserts', function () {
+    return view('pages/desserts');
+});
+Route::get('/breakfasts', function () {
+    return view('pages/breakfasts');
+});
+Route::get('/canned', function () {
+    return view('pages/canned');
+});
+Route::get('/pastry', function () {
+    return view('pages/pastry');
+});
+Route::get('/salads', function () {
+    return view('pages/salads');
+});
+
+Route::get('/addrecipe', function () {
+    return view('pages/addrecipe');
 });
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +57,13 @@ Route::get('/register', function () {
 |
 */
 
+
 Route::group(['middleware' => ['web']], function () {
     //
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
 });
